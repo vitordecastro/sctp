@@ -1,0 +1,21 @@
+set terminal pngcairo
+set output "data.png"
+
+set title "Protocolo"
+
+set nokey
+
+set boxwidth 0.8
+set style fill solid
+
+set xrange [-2:4]
+set xtics nomirror
+
+set yrange [0:300]
+set grid y
+set ylabel "Quantidade de Pacotes"
+
+plot "data.dat" using 0:2:3:xtic(1) with boxes lc rgb var ,\
+     "data.dat" using 0:($2+0.5):2 with labels
+
+#To execute: gnuplot plot.txt
